@@ -17,9 +17,8 @@ public class Cardapio {
 		String pizzas = "\nPizzas:";
 		for (Entry<String, Double> entry : this.pizzas.entrySet()) {
 			String sabor = (String) entry.getKey();
-			Double valor = (Double) entry.getValue();
 			
-			pizzas += "\n - Pizza de "+sabor+" - R$ "+valor;
+			pizzas += "\n - Pizza de "+sabor;
 		}
 		return pizzas;
 	}

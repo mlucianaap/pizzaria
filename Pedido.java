@@ -28,7 +28,7 @@ public class Pedido {
 		String pedidos = "\nPedidos:";
 		for (int i = 0; i < this.pedidos.size(); i++) {
 			Pizza pizza = this.pedidos.get(i);
-			pedidos += "\n - Pizza de "+pizza.getSabor()+" R$ "+pizza.getValor();
+			pedidos += "\n - Pizza de "+pizza.getSabor()+" - R$ "+pizza.getValor();
 			total += pizza.getValor();
 		}
 		pedidos += "\nValor total: R$ "+total;

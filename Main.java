@@ -11,8 +11,8 @@ public class Main {
 		cardapio.cadastrarPizza(pizza1);
 		cardapio.cadastrarPizza(pizza2);
 		cardapio.cadastrarPizza(pizza3);
-		
 		cardapio.cadastrarPizza(pizza4);
+		
 		System.out.println(cardapio.listarPizzas());
 		cardapio.excluirPizza(pizza3.getSabor());
 		System.out.println(cardapio.exibirCardapio());
