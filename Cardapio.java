@@ -1,3 +1,8 @@
+/*
+ * Nome: Maria Luciana Almeida Pereira
+ * Matrícula: 20211103020010
+ * */
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -9,8 +14,12 @@ public class Cardapio {
 		pizzas = new HashMap<>();
 	}
 	
-	public void cadastrarPizza(Pizza pizza) {
-		this.pizzas.put(pizza.getSabor(), pizza.getValor());
+	public boolean cadastrarPizza(Pizza pizza) {
+		boolean resultado = false;
+		if(this.pizzas.put(pizza.getSabor(), pizza.getValor()) == null) {
+			resultado = true;
+		}
+		return resultado;
 	}
 		
 	public String listarPizzas() {
@@ -34,7 +43,11 @@ public class Cardapio {
 		return cardapio;
 	}
 	
-	public void excluirPizza(String sabor) {
-		pizzas.remove(sabor);
+	public boolean excluirPizza(String sabor) {
+		boolean resultado = false;
+		if(pizzas.remove(sabor) != null) {
+			resultado = true;
+		}
+		return resultado;
 	}
 }

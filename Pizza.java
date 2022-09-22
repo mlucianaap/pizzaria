@@ -1,3 +1,8 @@
+/*
+ * Nome: Maria Luciana Almeida Pereira
+ * Matrícula: 20211103020010
+ * */
+
 public class Pizza {
 	private String sabor;
 	private double valor;
@@ -9,13 +14,7 @@ public class Pizza {
 	public String getSabor() {
 		return sabor;
 	}
-	public void setSabor(String sabor) {
-		this.sabor = sabor;
-	}
 	public double getValor() {
 		return valor;
-	}
-	public void setValor(double valor) {
-		this.valor = valor;
 	}
 }
