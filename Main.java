@@ -27,5 +27,8 @@ public class Main {
 		pedido.fazerPedido(pizza1.getSabor());
 		pedido.fazerPedido(pizza2.getSabor());
 		System.out.println(pedido.encerrarPedido());
+		
+		pedido.fazerPedido(pizza1.getSabor());
+		System.out.println(pedido.encerrarPedido());
 	}
 }

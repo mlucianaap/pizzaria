@@ -46,6 +46,8 @@ public class Pedido {
 			pedidos += "\n - Pizza de "+pizza.getSabor()+" - R$ "+pizza.getValor();
 		}
 		pedidos += "\nValor total: R$ "+calcularValorTotal();
+		total = 0;
+		this.pedidos.clear();
 		return pedidos;
 	}
 }
