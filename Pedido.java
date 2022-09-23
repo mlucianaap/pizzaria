@@ -40,7 +40,7 @@ public class Pedido {
 	}
 	
 	public String encerrarPedido() {
-		String pedidos = "\nPedidos:";
+		String pedidos = "\nPedido:";
 		for (int i = 0; i < this.pedidos.size(); i++) {
 			Pizza pizza = this.pedidos.get(i);
 			pedidos += "\n - Pizza de "+pizza.getSabor()+" - R$ "+pizza.getValor();

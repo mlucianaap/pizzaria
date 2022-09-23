@@ -14,12 +14,18 @@ public class Cardapio {
 		pizzas = new HashMap<>();
 	}
 	
-	public boolean cadastrarPizza(Pizza pizza) {
-		boolean resultado = false;
-		if(this.pizzas.put(pizza.getSabor(), pizza.getValor()) == null) {
-			resultado = true;
+	public String cadastrarPizza(Pizza pizza) {
+		String resultado;
+		if(pizza.getValor() >= 10 && pizza.getValor() <= 1000) {
+			if(this.pizzas.put(pizza.getSabor(), pizza.getValor()) == null) {
+				resultado = "Pizza cadastrada com sucesso!";
+			} else {
+				resultado = "Pizza já cadastrada!";
+			}
+		} else {
+			resultado = "Valor da pizza inválido!";
 		}
-		return resultado;
+	return resultado;
 	}
 		
 	public String listarPizzas() {
@@ -43,10 +49,12 @@ public class Cardapio {
 		return cardapio;
 	}
 	
-	public boolean excluirPizza(String sabor) {
-		boolean resultado = false;
+	public String excluirPizza(String sabor) {
+		String resultado;
 		if(pizzas.remove(sabor) != null) {
-			resultado = true;
+			resultado = "Pizza de "+sabor+" excluída com sucesso!";
+		} else {
+			resultado = "Sabor da pizza inválido!";
 		}
 		return resultado;
 	}

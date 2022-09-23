@@ -15,9 +15,9 @@ class Testes {
 		double valor = 20.0;
 		Cardapio cardapio = new Cardapio();
 		
-		boolean resultado = cardapio.cadastrarPizza(new Pizza(sabor, valor));
+		String resultado = cardapio.cadastrarPizza(new Pizza(sabor, valor));
 		
-		assertEquals(true, resultado);
+		assertEquals("Pizza cadastrada com sucesso!", resultado);
 	}
 	
 	@Test
@@ -26,11 +26,77 @@ class Testes {
 		double valor = 20.0;
 		Cardapio cardapio = new Cardapio();
 		
-		boolean resultado1 = cardapio.cadastrarPizza(new Pizza(sabor, valor));
-		boolean resultado2 = cardapio.cadastrarPizza(new Pizza(sabor, valor));
+		String resultado1 = cardapio.cadastrarPizza(new Pizza(sabor, valor));
+		String resultado2 = cardapio.cadastrarPizza(new Pizza(sabor, valor));
 		
-		assertEquals(true, resultado1);
-		assertEquals(false, resultado2);
+		assertEquals("Pizza cadastrada com sucesso!", resultado1);
+		assertEquals("Pizza já cadastrada!", resultado2);
+	}
+	
+	@Test
+	void testarCadastrarPizzaComValorIgual10() {
+		String sabor = "Mussarela";
+		double valor = 10.0;
+		Cardapio cardapio = new Cardapio();
+		
+		String resultado = cardapio.cadastrarPizza(new Pizza(sabor, valor));
+		
+		assertEquals("Pizza cadastrada com sucesso!", resultado);
+	}
+	
+	@Test
+	void testarCadastrarPizzaComValorMenorQue10() {
+		String sabor = "Mussarela";
+		double valor = 9.0;
+		Cardapio cardapio = new Cardapio();
+		
+		String resultado = cardapio.cadastrarPizza(new Pizza(sabor, valor));
+		
+		assertEquals("Valor da pizza inválido!", resultado);
+	}
+	
+	@Test
+	void testarCadastrarPizzaComValorIgualAZero() {
+		String sabor = "Mussarela";
+		double valor = 0.0;
+		Cardapio cardapio = new Cardapio();
+		
+		String resultado = cardapio.cadastrarPizza(new Pizza(sabor, valor));
+		
+		assertEquals("Valor da pizza inválido!", resultado);
+	}
+	
+	@Test
+	void testarCadastrarPizzaComValorMenorQueZero() {
+		String sabor = "Mussarela";
+		double valor = -1.0;
+		Cardapio cardapio = new Cardapio();
+		
+		String resultado = cardapio.cadastrarPizza(new Pizza(sabor, valor));
+		
+		assertEquals("Valor da pizza inválido!", resultado);
+	}
+	
+	@Test
+	void testarCadastrarPizzaComValorIgualA1000() {
+		String sabor = "Mussarela";
+		double valor = 1000.0;
+		Cardapio cardapio = new Cardapio();
+		
+		String resultado = cardapio.cadastrarPizza(new Pizza(sabor, valor));
+		
+		assertEquals("Pizza cadastrada com sucesso!", resultado);
+	}
+	
+	@Test
+	void testarCadastrarPizzaComValorMaiorQue1000() {
+		String sabor = "Mussarela";
+		double valor = 1001.0;
+		Cardapio cardapio = new Cardapio();
+		
+		String resultado = cardapio.cadastrarPizza(new Pizza(sabor, valor));
+		
+		assertEquals("Valor da pizza inválido!", resultado);
 	}
 	
 	@Test
@@ -46,8 +112,8 @@ class Testes {
 		String resultado = cardapio.listarPizzas();
 		
 		assertEquals("\nPizzas:"
-				+ "\n - Pizza de Mussarela"
-				+ "\n - Pizza de Calabreza", resultado);
+				+ "\n - Pizza de "+sabor1
+				+ "\n - Pizza de "+sabor2, resultado);
 	}
 	
 	@Test
@@ -63,20 +129,32 @@ class Testes {
 		String resultado = cardapio.exibirCardapio();
 		
 		assertEquals("\nCardápio:"
-				+ "\n - Pizza de Mussarela - R$ 20.0"
-				+ "\n - Pizza de Calabreza - R$ 18.0", resultado);
+				+ "\n - Pizza de "+sabor1+" - R$ "+valor1
+				+ "\n - Pizza de "+sabor2+" - R$ "+valor2, resultado);
 	}
 
 	@Test
-	void testarExcluiPizzaDoCardapio() {
+	void testarExcluirPizzaDoCardapio() {
 		String sabor = "Mussarela";
 		double valor = 20.0;
 		Cardapio cardapio = new Cardapio();
 		cardapio.cadastrarPizza(new Pizza(sabor, valor));
 		
-		boolean resultado = cardapio.excluirPizza(sabor);
+		String resultado = cardapio.excluirPizza(sabor);
 		
-		assertEquals(true, resultado);
+		assertEquals("Pizza de "+sabor+" excluída com sucesso!", resultado);
+	}
+	
+	@Test
+	void testarExcluirPizzaQueNaoExisteNoCardapio() {
+		String sabor = "Mussarela";
+		double valor = 20.0;
+		Cardapio cardapio = new Cardapio();
+		cardapio.cadastrarPizza(new Pizza(sabor, valor));
+		
+		String resultado = cardapio.excluirPizza("Calabreza");
+		
+		assertEquals("Sabor da pizza inválido!", resultado);
 	}
 	
 	@Test
@@ -138,10 +216,10 @@ class Testes {
 		
 		String resultado = pedido.encerrarPedido();
 		
-		assertEquals("\nPedidos:"
-				+ "\n - Pizza de Mussarela - R$ 20.0"
-				+ "\n - Pizza de Mussarela - R$ 20.0"
-				+ "\n - Pizza de Mussarela - R$ 20.0"
+		assertEquals("\nPedido:"
+				+ "\n - Pizza de "+sabor+" - R$ "+valor
+				+ "\n - Pizza de "+sabor+" - R$ "+valor
+				+ "\n - Pizza de "+sabor+" - R$ "+valor
 				+ "\nValor total: R$ 60.0", resultado);
 	}
 	
