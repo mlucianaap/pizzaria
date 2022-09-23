@@ -120,17 +120,13 @@ class Testes {
 	void testarExibirCardapio() {
 		String sabor1 = "Mussarela";
 		double valor1 = 20.0;
-		String sabor2 = "Calabreza";
-		double valor2 = 18.0;
 		Cardapio cardapio = new Cardapio();
 		cardapio.cadastrarPizza(new Pizza(sabor1, valor1));
-		cardapio.cadastrarPizza(new Pizza(sabor2, valor2));
 		
 		String resultado = cardapio.exibirCardapio();
 		
 		assertEquals("\nCardápio:"
-				+ "\n - Pizza de "+sabor1+" - R$ "+valor1
-				+ "\n - Pizza de "+sabor2+" - R$ "+valor2, resultado);
+				+ "\n - Pizza de Mussarela - R$ 20.0", resultado);
 	}
 
 	@Test
@@ -216,7 +212,7 @@ class Testes {
 		
 		String resultado = pedido.encerrarPedido();
 		
-		assertEquals("\nPedido:"
+		assertEquals("\nPedido encerrado com sucesso!\n\nPedido:"
 				+ "\n - Pizza de "+sabor+" - R$ "+valor
 				+ "\n - Pizza de "+sabor+" - R$ "+valor
 				+ "\n - Pizza de "+sabor+" - R$ "+valor
